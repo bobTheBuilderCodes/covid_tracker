@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Navbar,
   CountryCard,
@@ -12,10 +12,26 @@ import { useGetCovidByStatsQuery } from "./services/covidApi";
 function App() {
   const { data, isFetching } = useGetCovidByStatsQuery();
   const [searchCountry, setSearchCountry] = useState("");
+
   // const countryDetails = data?.response;
   const countryDetails = data?.response.filter(
     (country) => country.population && country.continent
   );
+
+  const [countries, setCountries] = useState([]);
+
+  console.log("New countries", countries);
+
+  const handleCountrySearch = () => {
+    const searchedCountry = countryDetails.filter((country) =>
+      country.country.includes(searchCountry)
+    );
+    setCountries(searchedCountry);
+  };
+
+  useEffect(() => {
+    handleCountrySearch();
+  }, [searchCountry, countries]);
 
   return (
     <div className="">
@@ -60,7 +76,7 @@ function App() {
             />
           </div>
           {/* continent, country, population, cases */}
-          {countryDetails?.map(({ country, continent, population }) => (
+          {countries?.map(({ country, continent, population }) => (
             <CountryList
               country={country}
               continent={continent}
