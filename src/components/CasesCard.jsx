@@ -1,4 +1,5 @@
 import React from "react";
+import { useGetCovidByStatsQuery } from "../services/covidApi";
 
 const CountryCard = ({
   new_cases,
@@ -6,6 +7,10 @@ const CountryCard = ({
   critical_cases,
   recovered_cases,
 }) => {
+  const { isFetching, data } = useGetCovidByStatsQuery();
+
+  console.log("Data", data);
+
   return (
     <div className=" grid grid-cols-2 h-36 bg-slate-600 text-white p-2 pl-4 m-4 card border-b-8 border-r-8 flex-wrap">
       <div>
