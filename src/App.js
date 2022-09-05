@@ -1,4 +1,5 @@
 import { TextField } from "@mui/material";
+import { useState } from "react";
 import {
   Navbar,
   CountryCard,
@@ -6,8 +7,16 @@ import {
   Charts,
   CasesCard,
 } from "./components";
+import { useGetCovidByStatsQuery } from "./services/covidApi";
 
 function App() {
+  const { data, isFetching } = useGetCovidByStatsQuery();
+  const [searchCountry, setSearchCountry] = useState("");
+  // const countryDetails = data?.response;
+  const countryDetails = data?.response.filter(
+    (country) => country.population && country.continent
+  );
+
   return (
     <div className="">
       {/* Navbar */}
@@ -46,16 +55,19 @@ function App() {
               size="small"
               label="search country"
               sx={{ mt: 2, mb: 1 }}
+              value={searchCountry}
+              onChange={(e) => setSearchCountry(e.target.value)}
             />
           </div>
-          <CountryList />
-          <CountryList />
-          <CountryList />
-          <CountryList />
-          <CountryList />
-          <CountryList />
-          <CountryList />
-          <CountryList />
+          {/* continent, country, population, cases */}
+          {countryDetails?.map(({ country, continent, population }) => (
+            <CountryList
+              country={country}
+              continent={continent}
+              population={population}
+              // cases={cases}
+            />
+          ))}
         </div>
       </div>
       {/* Footer */}
