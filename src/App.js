@@ -23,7 +23,7 @@ function App() {
             <Route element={<CountryCard />} path="/country/:countryId" />
           </Routes>
           <Routes>
-            <Route element={<CasesCard />} path="/country/:casesId" />
+            <Route element={<CasesCard />} path="/country/:countryId" />
           </Routes>
           <Routes>
             <Route element={<CountryList />} path="/country" />

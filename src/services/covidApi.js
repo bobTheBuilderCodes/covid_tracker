@@ -16,7 +16,7 @@ export const covidApi = createApi({
       query: () => createRequest("/statistics"),
     }),
     getCovidDetails: builder.query({
-      query: (countryId) => createRequest(`/${countryId}`),
+      query: (countryId) => createRequest(`statistics/${countryId}`),
     }),
   }),
 });
