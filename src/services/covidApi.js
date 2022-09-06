@@ -1,12 +1,3 @@
-// const options = {
-//   method: "GET",
-//   url: "https://covid-193.p.rapidapi.com/statistics",
-//   headers: {
-//     "X-RapidAPI-Key": "22bb234527msh843e8bb21458d39p155222jsnef0125281df4",
-//     "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
-//   },
-// };
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const covidApiHeaders = {
@@ -15,7 +6,6 @@ const covidApiHeaders = {
 };
 
 const createRequest = (url) => ({ url, headers: covidApiHeaders });
-
 const baseUrl = "https://covid-193.p.rapidapi.com";
 
 export const covidApi = createApi({
@@ -25,9 +15,12 @@ export const covidApi = createApi({
     getCovidByStats: builder.query({
       query: () => createRequest("/statistics"),
     }),
+    getCovidDetails: builder.query({
+      query: (countryId) => createRequest(`/${countryId}`),
+    }),
   }),
 });
 
 // Reducer name useGetCovidStatsQuery
 
-export const { useGetCovidByStatsQuery } = covidApi;
+export const { useGetCovidByStatsQuery, useGetCovidDetailsQuery } = covidApi;

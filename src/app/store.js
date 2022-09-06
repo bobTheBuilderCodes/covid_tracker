@@ -5,8 +5,8 @@ const store = configureStore({
   reducer: {
     [covidApi.reducerPath]: covidApi.reducer,
   },
-  //   middleware: (getDefaultMiddleware) =>
-  //     getDefaultMiddleware.concat(covidApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(covidApi.middleware),
 });
 
 export default store;
