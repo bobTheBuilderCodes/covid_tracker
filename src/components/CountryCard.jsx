@@ -17,9 +17,7 @@ const CountryCard = () => {
     <>
       {currentCountries?.map(({ continent, country, population, deaths }) => (
         <div
-
           className=" sticky top-16 grid grid-cols-2 h-48 place-items-center bg-slate-600 text-white  m-4 card border-b-8 border-r-8 flex-wrap"
-
           key={nanoid()}
         >
           <div>
