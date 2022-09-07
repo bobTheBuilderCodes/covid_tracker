@@ -17,7 +17,7 @@ const Charts = () => {
 
   return (
     <div
-      className="sticky bottom-120 h-80 flex flex-col justify-between gap-4 w-100 mx-4 md:grid grid-cols-1 lg:grid-cols-2 xl:h-[-120]"
+      className="hide sticky bottom-120 h-80 flex flex-col justify-between gap-4 w-[60vw] mx-4 md:grid grid-cols-1 "
       style={{ position: "sticky", bottom: "120px" }}
     >
       <div className=" flex-1 md:w-100">
@@ -45,7 +45,7 @@ const Charts = () => {
                 // },
                 // Third label
                 {
-                  label: "New cases ",
+                  label: "New cases",
                   data: [`${cases.new}`],
                   backgroundColor: "#C74329",
                   borderWidth: 2.5,
