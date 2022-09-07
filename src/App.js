@@ -1,17 +1,12 @@
-import { CircularProgress, TextField } from "@mui/material";
-import { Box } from "@mui/system";
-import { nanoid } from "@reduxjs/toolkit";
-import { useEffect, useState } from "react";
 import {
   Navbar,
   CountryCard,
   CountryList,
-  Charts,
   CasesCard,
+  Charts,
 } from "./components";
-import { useGetCovidByStatsQuery } from "./services/covidApi";
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -30,6 +25,9 @@ function App() {
           </Routes>
           <CountryList />
         </div>
+        <Routes>
+          <Route element={<Charts />} path="/country/:countryId" />
+        </Routes>
       </Router>
     </div>
   );

@@ -1,28 +1,23 @@
+import React from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import millify from "millify";
-import React from "react";
 import { useParams } from "react-router-dom";
-import {
-  useGetCovidByStatsQuery,
-  useGetCovidDetailsQuery,
-} from "../services/covidApi";
+import { useGetCovidByStatsQuery } from "../services/covidApi";
 
-const CountryCard = ({ country, continent, population, death }) => {
+const CountryCard = () => {
   const { countryId } = useParams();
   const { data } = useGetCovidByStatsQuery();
-
-  // console.log(data?.response, "Ghana details");
 
   const getCountryStats = (countryId) =>
     data?.response.filter((country) => country?.country === countryId);
 
-  let currentCountries = getCountryStats(countryId);
+  const currentCountries = getCountryStats(countryId);
 
   return (
-    <div>
+    <>
       {currentCountries?.map(({ continent, country, population, deaths }) => (
         <div
-          className="grid grid-cols-2 h-36 bg-slate-600 text-white p-2 pl-4 m-4 card border-b-8 border-r-8 flex-wrap"
+          className=" sticky top-16 grid grid-cols-2 h-36 bg-slate-600 text-white p-2 pl-4 m-4 card border-b-8 border-r-8 flex-wrap"
           key={nanoid()}
         >
           <div>
@@ -43,7 +38,7 @@ const CountryCard = ({ country, continent, population, death }) => {
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
