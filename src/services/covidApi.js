@@ -21,6 +21,4 @@ export const covidApi = createApi({
   }),
 });
 
-// Reducer name useGetCovidStatsQuery
-
 export const { useGetCovidByStatsQuery, useGetCovidDetailsQuery } = covidApi;
