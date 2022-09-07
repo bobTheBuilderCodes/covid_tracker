@@ -13,7 +13,7 @@ function App() {
     <div>
       <Router>
         <Navbar />
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 max-h-60vh sticky top-16">
           <Routes>
             <Route element={<CountryCard />} path="/country/:countryId" />
           </Routes>

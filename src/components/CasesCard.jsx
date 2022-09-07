@@ -14,7 +14,9 @@ const CountryCard = () => {
   return (
     <div>
       {currentCountries?.map(({ cases }) => (
-        <div className="sticky top-16 grid grid-cols-2 h-36 bg-slate-600 text-white p-2 pl-4 m-4 card border-b-8 border-r-8 flex-wrap">
+
+        <div className="sticky top-16 grid grid-cols-2 place-items-center h-48 bg-slate-600 text-white p-2 pl-4 m-4 card border-b-8 border-r-8 flex-wrap">
+
           <div>
             <p className="font-semibold text-lg">New Cases</p>
             <p className="">{cases.new || "Unknown"}</p>
